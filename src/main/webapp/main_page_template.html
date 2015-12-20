@@ -1,0 +1,79 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/#/">Ducker</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#/task/new">New task</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#/user/{{user.id}}">{{user.username}}</a></li>
+                <li><a href="#" id="logout" onclick="logout()">Log Out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="col-md-12 root_container">
+    <div class="col-md-7">
+        <div class="panel panel-default">
+            <div class="panel-heading">Statistics</div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Task Name</th>
+                        <th>Reporter</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="task in user_tasks">
+                        <td>{{task.id}}</td>
+                        <td>
+                            <a href='#/task/{{task.id}}'>{{task.name}} </a>
+                        </td>
+                        <td><a href="#/user/{{task.reporter.id}}">{{task.reporter.username}}</a></td>
+                        <td>{{task.status}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">Activity Stream</div>
+            <div class="panel-body">
+                <div class="media well" ng-repeat="activity in activity_stream">
+                    <a class="pull-left" href="#/user/{{activity.reporter.id}}">
+                        <img class="media-object" src="resources/img/64x64.png" alt="">{{activity.reporter.username}}
+                    </a>
+
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a class="pull-left" href="#/task/{{activity.id}}">{{activity.name}}</a>
+                            <small>&nbsp;{{activity.status}}</small>
+                        </h4>
+                        {{activity.description | limitTo : 100}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

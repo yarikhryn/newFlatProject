@@ -1,0 +1,68 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/#/">Ducker</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="">New task</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#/user/{{user.id}}">{{user.username}}</a></li>
+                <li><a href="#" id="logout" onclick="logout()">Log Out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="well bs-component">
+        <form class="form-horizontal" method="post">
+            <fieldset>
+                <legend>Create new task</legend>
+                <div class="form-group">
+                    <label for="TaskName" class="col-lg-2 control-label">Task name</label>
+
+                    <div class="col-lg-10">
+                        <input ng-model="task.name" type="text" class="form-control" id="TaskName" name="name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="TaskDesc" class="col-lg-2 control-label">Task description</label>
+
+                    <div class="col-lg-10">
+                        <textarea ng-model="task.description" rows="3" class="form-control" id="TaskDesc" name="description"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="TaskReporter" class="col-lg-2 control-label">Task Assigner</label>
+
+                    <div class="col-lg-10">
+                        <input ng-model="task.assigner" type="text" class="form-control" id="TaskReporter" name="reporter">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button ng-click="create_task()" class="btn btn-primary">Submit</button>
+                        <button class="btn btn-default">Cancel</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

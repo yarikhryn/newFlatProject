@@ -1,0 +1,91 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/#/">Ducker</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#/task/new">New task</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#/user/{{user.id}}">{{user.username}}</a></li>
+                <li><a href="#" id="logout" onclick="logout()">Log Out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="col-md-12 col-sm-12">
+    <div class="col-md-2 col-sm-2">
+    </div>
+    <div class="col-md-8 col-sm-8">
+        <div class="jumbotron well">
+            <div class="container">
+                <h3><strong>{{selected_task.name}}</strong></h3></p>
+                <dl class="dl-horizontal">
+                    <dt>Status</dt>
+                    <dd>
+                        <div class="btn-group" role=group aria-label="Basic example">
+                        <button type=button class="btn btn-default active">{{selected_task.status}}</button>
+                        <button ng-repeat="next_status in selected_task.possibleStatuses" type=button
+                                class="btn btn-primary" ng-click="updateStatus(next_status)">{{next_status}}
+                        </button>
+                            </div>
+                    </dd>
+                    <dt>Assigner</dt>
+                    <dd><a href="#/user/{{selected_task.assigner.id}}">{{selected_task.assigner.username}}</a></dd>
+                    <dt>Reporter</dt>
+                    <dd><a href="#/user/{{selected_task.reporter.id}}">{{selected_task.reporter.username}}</a></dd>
+                    <dt>Watchers</dt>
+                    <dd>{{selected_task.watcher.username}}</dd>
+                    <dt>Description</dt>
+                    <dd>{{selected_task.description}}</dd>
+                </dl>
+
+                <!-- Comments Form -->
+                <div>
+                    <h4>Leave a Comment:</h4>
+
+                    <form role="form">
+                        <div class="form-group">
+                            <textarea class="form-control" ng-model="comment.text" rows="3"></textarea>
+                        </div>
+                        <button type="submit" ng-click="doComment()" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <hr>
+                <p class="text-left"><h4>Comments</h4></p>
+
+                <!-- Comment -->
+                <div ng-repeat="comment in selected_task.comments">
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object" src="resources/img/64x64.png" alt="">
+                        </a>
+
+                        <div class="media-body">
+                            <h4 class="media-heading"><a
+                                    href="#/user/{{comment.user.id}}">{{comment.user.username}}</a>
+                                <small>{{comment.creationTime | date : 'dd MMMM yyyy HH.mm'}}</small>
+                            </h4>
+                            {{comment.text}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="col-md-2 col-sm-2">
+</div>
+</div>

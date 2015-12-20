@@ -1,0 +1,35 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    /*margin-bottom: 60px;*/
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    /*height: 60px;*/
+    background-color: inherit;
+    /*margin-bottom: -20px;*/
+}
+
+.root_container{
+    margin-bottom: 50px;
+}
+
+.media:first-child{
+    margin-top: 15px;
+}
+.btn-group{
+    display: inline-block;
+}
+
+.container>h5{
+    display: inline-block;
+    font-weight: bold;
+
+}
