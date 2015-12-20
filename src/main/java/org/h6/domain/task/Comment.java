@@ -13,6 +13,7 @@ public class Comment implements TaskItem{
     @Column
     private String text;
 
+
     @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "userId")
     private User user;
